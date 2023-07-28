@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import Markdown from './Markdown.vue'
 import Spin from './Spin.vue'
 import { useChatStore } from '@/stores/chat'
-import useScrollHook from '@/hooks/scroll/index'
+import useScrollHook from '@/hooks/scroll'
 
 const chatStore = useChatStore()
 const { messages } = storeToRefs(chatStore)
@@ -72,27 +72,29 @@ const handleClear = () => {
       <input
         ref="inputRef"
         v-model="newMessage" type="text" :disabled="loading" autocomplete="off" placeholder="请输入"
-        class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
-      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-      invalid:border-pink-500 invalid:text-pink-600
-      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
+        class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
         @keypress.enter="handleChat"
       >
       <button
-        v-if="!loading" class="inline-flex items-center px-4 leading-6 text-sm rounded-md shadow text-white bg-sky-500 hover:bg-sky-400 transition ease-in-out duration-150"
+        v-if="!loading"
+        class="inline-flex items-center px-4 leading-6 text-sm rounded-md shadow text-white bg-sky-500 hover:bg-sky-400 transition ease-in-out duration-150"
         @click="handleChat"
       >
         发送
       </button>
       <button
-        v-else class="inline-flex items-center px-4 leading-6 text-sm rounded-md shadow text-white bg-amber-500 hover:bg-amber-400 transition ease-in-out duration-150"
+        v-else
+        class="inline-flex items-center px-4 leading-6 text-sm rounded-md shadow text-white bg-amber-500 hover:bg-amber-400 transition ease-in-out duration-150"
         @click="stop"
       >
         <Spin class="text-white" />
         停止
       </button>
-      <button class="inline-flex items-center px-4 leading-6 text-sm border border-slate-300 rounded-md text-slate-600 hover:bg-slate-100 transition ease-in-out duration-150" :disabled="loading" @click="handleClear">
+      <button
+        class="inline-flex items-center px-4 leading-6 text-sm border border-slate-300 shadow-sm rounded-md text-slate-600 hover:bg-slate-100 transition ease-in-out duration-150"
+        :disabled="loading"
+        @click="handleClear"
+      >
         重置
       </button>
     </div>
