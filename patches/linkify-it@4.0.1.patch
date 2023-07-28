@@ -1,0 +1,13 @@
+diff --git a/lib/re.js b/lib/re.js
+index 35d88b64a26330450ff177ae8a5b04d1111576b8..b51f0983134dc47a4f26e65bf4fd1bb043ef19ba 100644
+--- a/lib/re.js
++++ b/lib/re.js
+@@ -51,7 +51,7 @@ module.exports = function (opts) {
+     '(?:' +
+       '[/?#]' +
+         '(?:' +
+-          '(?!' + re.src_ZCc + '|' + text_separators + '|[()[\\]{}.,"\'?!\\-;]).|' +
++          '(?!' + re.src_ZCc + '|' + text_separators + '|[()[\\]{}.,"\'?!\\-;，。？！：（）“”]).|' +
+           '\\[(?:(?!' + re.src_ZCc + '|\\]).)*\\]|' +
+           '\\((?:(?!' + re.src_ZCc + '|[)]).)*\\)|' +
+           '\\{(?:(?!' + re.src_ZCc + '|[}]).)*\\}|' +

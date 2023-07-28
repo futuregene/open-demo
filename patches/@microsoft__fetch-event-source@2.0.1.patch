@@ -1,0 +1,87 @@
+diff --git a/lib/cjs/parse.js b/lib/cjs/parse.js
+index 0db16d962f2d577c363d9e05a15d3a966c73ca5f..60b6cb35b812dcbf2af54ae74011a1db0343ce2b 100644
+--- a/lib/cjs/parse.js
++++ b/lib/cjs/parse.js
+@@ -78,9 +78,7 @@ function getMessages(onId, onRetry, onMessage) {
+             const value = decoder.decode(line.subarray(valueOffset));
+             switch (field) {
+                 case 'data':
+-                    message.data = message.data
+-                        ? message.data + '\n' + value
+-                        : value;
++                    message.data = value;
+                     break;
+                 case 'event':
+                     message.event = value;
+@@ -105,12 +103,21 @@ function concat(a, b) {
+     res.set(b, a.length);
+     return res;
+ }
++class Message {
++    constructor(){
++        this._data = [];
++        this.event = '';
++        this.id = '';
++        this.retry = undefined;
++    }
++    get data() {
++        return this._data.join('\n');
++    }
++    set data(value) {
++        this._data.push(value)
++    }
++}
+ function newMessage() {
+-    return {
+-        data: '',
+-        event: '',
+-        id: '',
+-        retry: undefined,
+-    };
++    return new Message()
+ }
+ //# sourceMappingURL=parse.js.map
+\ No newline at end of file
+diff --git a/lib/esm/parse.js b/lib/esm/parse.js
+index dfceafb832669834854dcb658885fb7575ccd2f9..fb1ae4ed621da4d5db6cca0086e4cbb3819c3d3a 100644
+--- a/lib/esm/parse.js
++++ b/lib/esm/parse.js
+@@ -73,9 +73,7 @@ export function getMessages(onId, onRetry, onMessage) {
+             const value = decoder.decode(line.subarray(valueOffset));
+             switch (field) {
+                 case 'data':
+-                    message.data = message.data
+-                        ? message.data + '\n' + value
+-                        : value;
++                    message.data = value;
+                     break;
+                 case 'event':
+                     message.event = value;
+@@ -99,12 +97,21 @@ function concat(a, b) {
+     res.set(b, a.length);
+     return res;
+ }
++class Message {
++    constructor(){
++        this._data = [];
++        this.event = '';
++        this.id = '';
++        this.retry = undefined;
++    }
++    get data() {
++        return this._data.join('\n');
++    }
++    set data(value) {
++        this._data.push(value)
++    }
++}
+ function newMessage() {
+-    return {
+-        data: '',
+-        event: '',
+-        id: '',
+-        retry: undefined,
+-    };
++    return new Message()
+ }
+ //# sourceMappingURL=parse.js.map
