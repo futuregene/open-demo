@@ -68,7 +68,7 @@ const handleClear = () => {
         </li>
       </ul>
     </div>
-    <div class="h-16 flex gap-2 py-3 px-4 border-t bg-slate-50">
+    <div class="h-16 flex gap-2 p-3 border-t bg-slate-50">
       <input
         ref="inputRef"
         v-model="newMessage" type="text" :disabled="loading" autocomplete="off" placeholder="请输入"
