@@ -40,8 +40,8 @@ const handleClear = () => {
       <ul>
         <li v-for="m of messages" :key="m.symbol">
           <div class="flex gap-4 items-start p-4 border-b">
-            <div class="w-16 bg-black/10 text-center py-1">
-              你
+            <div class="w-8 h-8 py-1 flex justify-center text-slate-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2Zm-8-9a6 6 0 1 1 0-12a6 6 0 0 1 0 12Zm0-2a4 4 0 1 0 0-8a4 4 0 0 0 0 8Z" /></svg>
             </div>
             <div class="flex-1 font-markdown self-center">
               <div class="text-base">
@@ -50,8 +50,8 @@ const handleClear = () => {
             </div>
           </div>
           <div class="flex gap-4 items-start p-4 border-b">
-            <div class="w-16 bg-black/10 text-center py-1">
-              客服
+            <div class="w-8 h-8 py-1 flex justify-center text-slate-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21 8a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1.062A8.001 8.001 0 0 1 12 23v-2a6 6 0 0 0 6-6V9A6 6 0 0 0 6 9v7H3a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1.062a8.001 8.001 0 0 1 15.876 0H21ZM7.76 15.785l1.06-1.696A5.972 5.972 0 0 0 12 15a5.972 5.972 0 0 0 3.18-.911l1.06 1.696A7.963 7.963 0 0 1 12 17a7.962 7.962 0 0 1-4.24-1.215Z" /></svg>
             </div>
             <div
               v-if="m.assistant"
