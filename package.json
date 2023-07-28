@@ -1,7 +1,17 @@
 {
   "name": "open-demo",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "WestlakeChat OpenAPI Demo",
+  "author": "tallcode",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/futuregene/open-demo.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "type": "module",
   "scripts": {
     "dev": "node server/index.mjs dev",
