@@ -3,10 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>智能客服</title>
+    <title>智能客服 - iframe</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div style="padding: 20px 0">
+        <iframe
+            width="400px"
+            height="600px"
+            frameborder="0"
+            style="display: block; border: 1px solid #CCC; border-radius: 4px; margin: 0 auto;"
+            src="./main.html">
+        </iframe>
+    </div>
+    <div style="text-align: center;">
+      <a href="./main.html" target="_blank">新窗口打开</a>
+    </div>
   </body>
 </html>

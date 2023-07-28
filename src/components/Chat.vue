@@ -39,40 +39,40 @@ const handleClear = () => {
     <div ref="scrollRef" class="h-[calc(100%-4rem)] overflow-x-hidden">
       <ul>
         <li v-for="m of messages" :key="m.symbol">
-          <div class="flex gap-4 items-center p-4 border-b">
-            <div class="w-24 bg-black/10 text-center py-1">
+          <div class="flex gap-4 items-start p-4 border-b">
+            <div class="w-16 bg-black/10 text-center py-1">
               你
             </div>
-            <div class="flex-1 font-markdown flex items-center">
+            <div class="flex-1 font-markdown self-center">
               <div class="text-base">
                 {{ m.user }}
               </div>
             </div>
           </div>
-          <div class="flex gap-4 items-center p-4 border-b">
-            <div class="w-24 bg-black/10 text-center py-1">
+          <div class="flex gap-4 items-start p-4 border-b">
+            <div class="w-16 bg-black/10 text-center py-1">
               客服
             </div>
             <div
               v-if="m.assistant"
-              class="flex-1"
+              class="flex-1 self-center"
             >
               <Markdown
                 :value="m.assistant"
               />
             </div>
-            <div v-else>
+            <div v-else class="self-center">
               <Spin class="text-sky-500" />
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <div class="h-16 flex gap-2 py-3 px-4 border-t">
+    <div class="h-16 flex gap-2 py-3 px-4 border-t bg-slate-50">
       <input
         ref="inputRef"
         v-model="newMessage" type="text" :disabled="loading" autocomplete="off" placeholder="请输入"
-        class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+        class="flex-1 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
         @keypress.enter="handleChat"
       >
       <button

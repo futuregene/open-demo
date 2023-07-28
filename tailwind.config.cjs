@@ -2,6 +2,7 @@
 export default {
   content: [
     './index.html',
+    './main.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
   ],
   theme: {
