@@ -16,4 +16,12 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-# sigma-lowcode
+
+# Open-Demo
+## Develop
+1. Install `pnpm install`
+2. Rename `.env.example`  to `.env`, Edit `.env` set your bot id and api key
+3. Dev `pnpm run dev`
+
+## Deploy
+ `pnpm run start` or `./build_local_image.sh`
