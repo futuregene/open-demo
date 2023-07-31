@@ -1,13 +1,10 @@
 import { EventStreamContentType, fetchEventSource } from '@microsoft/fetch-event-source'
-import { HttpError } from '@/types/error'
 
 export const chat = async (conversations: Message[], controller: AbortController, callback: (data: string) => void) => {
   const result: string[] = []
   await fetchEventSource('/api/chat', {
     method: 'POST',
-    headers: Object.assign(
-      { 'Content-Type': 'application/json' },
-    ) as Record<string, string>,
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       conversations: conversations.map((item) => {
         return {
@@ -23,20 +20,10 @@ export const chat = async (conversations: Message[], controller: AbortController
         // everything's good
       }
       else {
-        if (!response.ok) {
-          throw new HttpError({
-            status: response.status,
-            statusText: response.statusText,
-            message: response.statusText,
-          })
-        }
-        else {
-          throw new HttpError({
-            status: 500,
-            statusText: 'Service Error',
-            message: 'unexpected content-type',
-          })
-        }
+        if (!response.ok)
+          throw new Error(response.statusText)
+        else
+          throw new Error('Unexpected Content-Type')
       }
     },
     onmessage(ev) {
@@ -53,8 +40,6 @@ export const chat = async (conversations: Message[], controller: AbortController
     onerror(error) {
       throw error
     },
-  }).catch((error) => {
-    throw error
   })
   return result.join('')
 }

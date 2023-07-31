@@ -1,29 +1,28 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, toRef } from 'vue'
 import * as API from '@/api/chat'
 
 export const useChatStore = defineStore('chat', () => {
   const controller = ref<AbortController>()
-
   const messages = ref<Message[]>([])
 
   const chat = async (text: string, callback: Function) => {
     controller.value = new AbortController()
-    const symbol = Symbol('message')
-    messages.value.push({
-      symbol,
+    const len = messages.value.push({
+      symbol: Symbol('message'),
       user: text,
       assistant: '',
     })
+    const currentMessage = toRef(messages.value, len - 1)
     callback()
     const result = await API.chat(messages.value, controller.value, (data) => {
-      messages.value.find(item => item.symbol === symbol)!.assistant = data
+      currentMessage.value.assistant = data
       callback()
     }).catch((e) => {
       window.console.error(e)
       return `<${e.message}>`
     })
-    messages.value.find(item => item.symbol === symbol)!.assistant = result || '<Empty Message>'
+    currentMessage.value.assistant = result || '<Empty Message>'
     callback()
   }
 
