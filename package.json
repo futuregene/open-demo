@@ -15,14 +15,14 @@
   "type": "module",
   "scripts": {
     "dev": "node server/index.mjs dev",
-    "server": "pm2-runtime start processes.json",
-    "start": "pm2 start processes.json",
-    "stop": "pm2 stop processes.json",
+    "serve": "pm2-runtime start server/processes.json",
+    "start": "pm2 start server/processes.json",
+    "stop": "pm2 stop server/processes.json",
     "build": "vue-tsc && vite build"
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "2.0.1",
-    "chalk": "^5.2.0",
+    "chalk": "^5.3.0",
     "compression": "^1.7.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -31,27 +31,27 @@
     "linkify-it": "4.0.1",
     "markdown-it": "^13.0.1",
     "markdown-it-link-attributes": "^4.0.1",
-    "pinia": "^2.1.3",
+    "pinia": "^2.1.6",
     "pm2": "^5.3.0",
-    "vue": "^3.3.0"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.35.3",
+    "@antfu/eslint-config": "^0.39.8",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
-    "@types/node": "^20.3.1",
-    "@vitejs/plugin-vue": "^4.1.0",
+    "@types/node": "^20.4.5",
+    "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.35.0",
+    "eslint": "^8.46.0",
     "less": "^4.1.3",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.27",
     "postcss-html": "^1.5.0",
     "postcss-import": "^15.1.0",
     "postcss-less": "^6.0.0",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9",
-    "vue-tsc": "^1.4.2"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "vue-tsc": "^1.8.8"
   },
   "pnpm": {
     "overrides": {

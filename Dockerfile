@@ -14,6 +14,5 @@ ENV NODE_ENV=production
 COPY --from=build /app/dist ./dist
 COPY /server ./server
 COPY .env .
-COPY processes.json .
-CMD [ "npm", "run", "server" ]
-EXPOSE 8708
+CMD [ "npm", "run", "serve" ]
+EXPOSE 5173
