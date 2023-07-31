@@ -1,9 +1,11 @@
-FROM node:lts-alpine AS base
-RUN npm install pnpm -g
+FROM node:lts-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 COPY package.json .
 COPY patches ./patches
-RUN pnpm install
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 
 FROM base AS build
 COPY . .
