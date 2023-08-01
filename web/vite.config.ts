@@ -1,4 +1,5 @@
-import path from 'path'
+import path from 'node:path'
+import process from 'node:process'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -17,6 +18,14 @@ export default defineConfig({
       input: {
         index: path.resolve(__dirname, 'index.html'),
         main: path.resolve(__dirname, 'main.html'),
+      },
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
       },
     },
   },

@@ -1,6 +1,6 @@
 {
     "apps" : [{
-        "script"    : "server/index.mjs",
+        "script"    : "index.mjs",
         "instances" : "-1",
         "exec_mode" : "cluster"
     }]

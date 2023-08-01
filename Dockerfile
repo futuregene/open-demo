@@ -3,18 +3,19 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /app
-COPY package.json .
-COPY patches ./patches
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
+
+FROM base AS prod
+COPY /server .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod
 
 FROM base AS build
 COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 RUN pnpm run build
 
 FROM base AS runtime
 ENV NODE_ENV=production
-COPY --from=build /app/dist ./dist
-COPY /server ./server
-COPY .env .
+COPY --from=prod /app .
+COPY --from=build /app/web/dist ./dist
 CMD [ "npm", "run", "serve" ]
-EXPOSE 5173
+EXPOSE 3000

@@ -10,52 +10,25 @@
     "url": "https://github.com/futuregene/open-demo.git"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18",
+    "pnpm": ">=8"
   },
   "type": "module",
+  "workspaces": [
+    "web",
+    "server"
+  ],
   "scripts": {
-    "dev": "node server/index.mjs dev",
-    "serve": "pm2-runtime start server/processes.json",
-    "start": "pm2 start server/processes.json",
-    "stop": "pm2 stop server/processes.json",
-    "build": "vue-tsc && vite build"
-  },
-  "dependencies": {
-    "@microsoft/fetch-event-source": "2.0.1",
-    "chalk": "^5.3.0",
-    "compression": "^1.7.4",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "github-markdown-css": "^5.2.0",
-    "got": "^13.0.0",
-    "linkify-it": "4.0.1",
-    "markdown-it": "^13.0.1",
-    "markdown-it-link-attributes": "^4.0.1",
-    "pinia": "^2.1.6",
-    "pm2": "^5.3.0",
-    "vue": "^3.3.4"
+    "build": "pnpm -r run build"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.8",
-    "@types/markdown-it": "^12.2.3",
-    "@types/markdown-it-link-attributes": "^3.0.1",
-    "@types/node": "^20.4.5",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.46.0",
-    "less": "^4.1.3",
-    "postcss": "^8.4.27",
-    "postcss-html": "^1.5.0",
-    "postcss-import": "^15.1.0",
-    "postcss-less": "^6.0.0",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.7",
-    "vue-tsc": "^1.8.8"
+    "eslint": "^8.46.0"
   },
   "pnpm": {
     "overrides": {
-      "linkify-it": "$linkify-it"
+      "@microsoft/fetch-event-source": "2.0.1",
+      "linkify-it": "4.0.1"
     },
     "patchedDependencies": {
       "linkify-it@4.0.1": "patches/linkify-it@4.0.1.patch",

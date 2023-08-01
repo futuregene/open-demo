@@ -1,6 +1,6 @@
 import { EventStreamContentType, fetchEventSource } from '@microsoft/fetch-event-source'
 
-export const chat = async (conversations: Message[], controller: AbortController, callback: (data: string) => void) => {
+export async function chat(conversations: Message[], controller: AbortController, callback: (data: string) => void) {
   const result: string[] = []
   await fetchEventSource('/api/chat', {
     method: 'POST',

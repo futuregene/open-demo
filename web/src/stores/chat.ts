@@ -6,7 +6,7 @@ export const useChatStore = defineStore('chat', () => {
   const controller = ref<AbortController>()
   const messages = ref<Message[]>([])
 
-  const chat = async (text: string, callback: Function) => {
+  const chat = async (text: string, callback: () => void) => {
     controller.value = new AbortController()
     const len = messages.value.push({
       symbol: Symbol('message'),

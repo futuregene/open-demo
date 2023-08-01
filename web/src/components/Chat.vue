@@ -14,7 +14,7 @@ const newMessage = ref<string>('')
 const loading = ref<boolean>(false)
 const inputRef = ref<HTMLInputElement>()
 
-const handleChat = async () => {
+async function handleChat() {
   if (newMessage.value !== '') {
     loading.value = true
     const m = newMessage.value
@@ -29,7 +29,7 @@ const handleChat = async () => {
   }
 }
 
-const handleClear = () => {
+function handleClear() {
   messages.value = []
 }
 </script>

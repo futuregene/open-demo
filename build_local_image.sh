@@ -9,4 +9,4 @@ if [ -n "$container_exists" ]; then
     docker container rm ${container_name}
 fi    
 
-docker run --restart=always -p 8108:5173 --name ${container_name} -d ${container_name}:latest
+docker run --restart=always -p 8108:3000 --name ${container_name} -d ${container_name}:latest
